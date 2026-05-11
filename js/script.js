@@ -58,7 +58,7 @@
       requestAnimationFrame(loop);
     })();
 
-    /* reevla no scroll */
+    /* revela no scroll */
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
@@ -71,9 +71,9 @@
     function addScore(pts, el) {
       score += pts; xp += pts; streak++;
       // Streak
-      if (streak > 0 && streak % 5 === 0) { addScore(5, null); showToast(`🔥 ${streak} Streak BONUS! +5 ❤️`); }
+      if (streak > 0 && streak % 5 === 0) { addScore(5, null); showToast(`🔥 ${streak} Streak BÔNUS! +5 ❤️`); }
       // Level up
-      while (xp >= XP_PER_LEVEL) { xp -= XP_PER_LEVEL; level++; showToast(`🌟 Level Up! You're now Level ${level}!`); }
+      while (xp >= XP_PER_LEVEL) { xp -= XP_PER_LEVEL; level++; showToast(`Subiu de nível, agora você é nível ${level}!`); }
       updateUI();
       // Pop 
       if (el) {
@@ -163,7 +163,7 @@
             setTimeout(() => {
               addScore(15, null);
               launchConfetti();
-              showWin(`🧠 Incredible! You matched all ${pairs} pairs in just ${memMoves} moves! You earned 15 bonus hearts! Mom loves your memory!`);
+              showWin(` Uau, você achou todos os ${pairs} pares em só ${memMoves} movimentos! Você ganhou 15 corações!`);
             }, 500);
           }
         } else {
@@ -179,17 +179,17 @@
 
     /* jogo 3 */
     const WORD_BANK = [
-      { word: 'MOTHER', clue: 'The person who gave you life and loves you unconditionally', cat: '💖 Family' },
-      { word: 'WARMTH', clue: 'The feeling of a mom\'s hug on a cold day', cat: '🌞 Feelings' },
-      { word: 'FLOWER', clue: 'A beautiful gift for a beautiful person', cat: '🌸 Nature' },
-      { word: 'TENDER', clue: 'Gentle care and loving patience', cat: '💝 Qualities' },
-      { word: 'BRAVE', clue: 'A word that perfectly describes every mother', cat: '💪 Strength' },
-      { word: 'HUGS', clue: 'Moms dispense these for free, unlimited supply', cat: '🤗 Love' },
-      { word: 'GRACE', clue: 'Moving through life with beauty and dignity', cat: '👑 Elegance' },
-      { word: 'LOYAL', clue: 'Always by your side no matter what, just like Mom', cat: '🛡️ Devotion' },
-      { word: 'SMILE', clue: 'Mom\'s most powerful superpower', cat: '😊 Joy' },
-      { word: 'HEART', clue: 'Mom keeps yours safe, always', cat: '💕 Love' },
-    ];
+  { word: 'MAE', clue: 'A pessoa que te deu a vida e te ama incondicionalmente', cat: 'Família' },
+  { word: 'CALOR', clue: 'A sensação de um abraço de mãe em um dia frio', cat: 'Sentimentos' },
+  { word: 'FLOR', clue: 'Um lindo presente para uma pessoa linda', cat: 'Natureza' },
+  { word: 'CARINHO', clue: 'Cuidado gentil e paciência amorosa', cat: 'Qualidades' },
+  { word: 'FORTE', clue: 'Uma palavra que descreve perfeitamente toda mãe', cat: 'Força' },
+  { word: 'ABRACOS', clue: 'Mães distribuem isso de graça, com estoque infinito', cat: 'Amor' },
+  { word: 'GRACA', clue: 'Viver a vida com beleza e dignidade', cat: 'Elegância' },
+  { word: 'LEAL', clue: 'Sempre ao seu lado não importa o quê, igual à mãe', cat: 'Devoção' },
+  { word: 'SORRISO', clue: 'O superpoder mais forte da mãe', cat: 'Alegria' },
+  { word: 'CORACAO', clue: 'A mãe mantém o seu seguro, sempre', cat: 'Amor' },
+];
 
     let wordQueue = [], wordIdx = 0, currentWord = '', currentGuessed = [], wordScore = 0;
 
@@ -209,7 +209,7 @@
       if (wordIdx >= wordQueue.length) {
         addScore(20, null);
         launchConfetti();
-        showWin(`💌 You completed ALL ${wordQueue.length} Words of Love! Amazing! +20 bonus hearts! Mom is so proud of you!`);
+        showWin(`💌 Você completou todos ${wordQueue.length} Amazing! +20 corações bônus!`);
         wordIdx = 0; renderWordProgress(); loadWord(); return;
       }
       const entry = wordQueue[wordIdx];
@@ -257,7 +257,7 @@
         addScore(2, btn);
         renderWordBlanks();
         if (currentGuessed.every(c => c !== null)) {
-          document.getElementById('word-feedback').textContent = '🎉 Perfect! You got it!';
+          document.getElementById('word-feedback').textContent = 'Nice, isso mesmo';
           document.getElementById('word-next-btn').style.display = 'inline-block';
           wordIdx++; renderWordProgress();
         }
@@ -265,7 +265,7 @@
         btn.style.background = 'rgba(239,68,68,0.15)';
         btn.style.borderColor = '#ef4444';
         streak = Math.max(0, streak - 1); updateUI();
-        document.getElementById('word-feedback').textContent = '💭 Not quite there — try another!';
+        document.getElementById('word-feedback').textContent = 'Aqui não... Vai em outro';
       }
     }
 
@@ -277,13 +277,12 @@
 
     /* caixinhas */
     const GIFTS = [
-      { icon: '🌹', title: 'A Garden of Roses', text: 'Imagine a garden filled with the most beautiful roses, all blooming just for you. This is how full of beauty my life is because you are in it.' },
-      { icon: '⭐', title: 'You Are My Star', text: 'When I look at the stars, I think of you. You light up the darkest corners of my world and guide me home every single time.' },
-      { icon: '🍰', title: 'Sweet Like You', text: 'Nothing in the world is as sweet as your love. Not cake, not candy, not anything. Thank you for being the sweetest part of my life.' },
-      { icon: '🎵', title: 'Our Song', text: '"You are the sunshine of my life" — every song written about love has secretly been written about you, Mom. You are my favorite melody.' },
-      { icon: '🌙', title: 'Every Sleepless Night', text: 'Every night you stayed up to watch over me, I was safe because of you. I hope you know that your sacrifices never went unnoticed.' },
-      { icon: '🦋', title: 'You Set Me Free', text: 'You raised me with wings strong enough to fly, and a heart brave enough to soar. Everything I am is because of everything you gave.' },
-    ];
+     { icon: '🌹', title: 'Um Jardim de Rosas', text: 'Imagine um jardim cheio das rosas mais bonitas, todas florescendo só para você. É assim que minha vida é cheia de beleza porque você faz parte dela.' },
+     { icon: '⭐', title: 'Você É Minha Estrela', text: 'Quando eu olho para as estrelas, penso em você. Você ilumina os cantos mais escuros do meu mundo e sempre me guia de volta para casa.' },
+     { icon: '🍰', title: 'Doce Como Você', text: 'Nada no mundo é tão doce quanto o seu amor. Nem bolo, nem doces, nem qualquer outra coisa. Obrigado por ser a parte mais doce da minha vida.' },
+     { icon: '🌙', title: 'Cada Noite Sem Dormir', text: 'Cada noite em que você ficou acordada cuidando de mim, eu estava seguro por sua causa. Espero que você saiba que seus sacrifícios nunca passaram despercebidos.' },
+     { icon: '🦋', title: 'Você Me Deu Liberdade', text: 'Você me criou com asas fortes o bastante para voar e um coração corajoso o bastante para alcançar os céus. Tudo o que eu sou é por causa de tudo o que você me deu.' },
+ ];
 
     const giftRow = document.getElementById('gifts-row');
     GIFTS.forEach((g, i) => {
