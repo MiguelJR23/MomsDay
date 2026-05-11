@@ -1,30 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Feliz dia das mães</title>
-  <meta name="description" content="A beautiful Mother's Day celebration game created with love, just for you Mom." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap"
     rel="stylesheet" />
-
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
+  
 <body>
-  <section id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow"></div>
 
+  <!-- HERO -->
+  <section id="hero">
     <div class="hero-content">
-      <div class="badge">💐 Feliz dia das mães 💐</div>
+      <div class="badge">Feliz dia das mães</div>
 
       <h1 class="hero-title">
         Para a mais <span>linda</span><br />
@@ -32,24 +27,97 @@
       </h1>
 
       <p class="hero-subtitle">
-        Um pequeno jogo feito com todo meu amor ❤️
+        Um pequeno jogo feito com todo meu amor
       </p>
 
       <p class="hero-desc">
-        Mãe, este é um pequeno presente só para você jogos, flores e palavras
-        que nunca poderão expressar completamente o quanto você significa para mim.
+        Mãe, este é um pequeno presente só para você.
       </p>
 
       <a href="#game-section" class="btn-primary">
-        Comece seu dia especial 🌸
+        Começar
       </a>
     </div>
+  </section>
 
-    <div class="scroll-arrow">
-      <span>↓</span>
+  <!-- GAME SECTION -->
+  <section id="game-section">
+
+    <div class="game-header">
+      <h2>Jogos especiais para você</h2>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-memory" onclick="switchTab('memory')">
+        Memória
+      </button>
+
+      <button class="tab-btn" id="tab-word" onclick="switchTab('word')">
+        Palavras
+      </button>
+    </div>
+
+    <!-- MEMORY GAME -->
+    <div class="game-panel active" id="panel-memory">
+      <div id="memory-grid" class="memory-grid"></div>
+      <div id="mem-status"></div>
+    </div>
+
+    <!-- WORD GAME -->
+    <div class="game-panel" id="panel-word">
+      <div class="word-card">
+        <div id="word-cat"></div>
+        
+        <h3 id="word-clue"></h3>
+
+        <div id="word-blanks"></div>
+        <div id="letter-choices"></div>
+
+        <p id="word-feedback"></p>
+
+        <button id="word-next-btn" onclick="nextWord()">
+          Próxima palavra
+        </button>
+
+      </div>
+    </div>
+    <!-- GIFTS -->
+    <div class="gifts-section">
+
+      <h2>Caixinhas especiais</h2>
+
+      <div id="gifts-row"></div>
     </div>
   </section>
+
+  <!-- GIFT MODAL -->
+  <div id="overlay" onclick="closeGiftMsg()"></div>
+
+  <div id="gift-msg">
+    <div id="gift-msg-icon"></div>
+    <h2 id="gift-msg-title"></h2>
+    <p id="gift-msg-text"></p>
+    <button onclick="closeGiftMsg()">
+      Fechar
+    </button>
+  </div>
+
+  <!-- WIN -->
+  <div id="win-overlay">
+    <div class="win-box">
+      <h2>Parabéns!</h2>
+      <p id="win-msg"></p>
+      
+      <button onclick="closeWin()">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
   <script src="js/script.js"></script>
+
 </body>
 
 </html>
