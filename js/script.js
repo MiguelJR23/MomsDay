@@ -1,4 +1,3 @@
- <script>
     /* petálas */
     const PETALS = ['🌸', '🌺', '🌷', '🌹', '💮', '🏵️', '💐', '🌼', '🌻'];
     function spawnPetal() {
@@ -358,4 +357,3 @@
     }
 
     startMemory(4);
-  </script>
