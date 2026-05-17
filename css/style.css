@@ -1,12 +1,10 @@
- <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
     :root {
       --rose: #e8537a;
       --rose-light: #f7a8c0;
@@ -1104,4 +1102,3 @@
       opacity: 1;
       transform: translateY(0);
     }
-  </style>
